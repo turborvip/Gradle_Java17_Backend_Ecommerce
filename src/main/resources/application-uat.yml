@@ -1,0 +1,4 @@
+# application-uat.yml
+
+server:
+  port : 5080

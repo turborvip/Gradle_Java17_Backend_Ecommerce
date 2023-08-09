@@ -1,0 +1,49 @@
+# application-dev.yml
+server:
+  port : 8077
+#  connection-timeout: 5s
+  tomcat:
+    accessors:
+      enabled : true
+
+spring:
+  jpa:
+    database: POSTGRESQL
+
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:2345/security?createDatabaseIfNotExist=true
+    username: turborvip
+    password: 123456a
+    driverClassName: org.postgresql.Driver
+
+hibernate:
+  dialect: org.hibernate.dialect.PostgresPlusDialect
+  showSQL: false
+  formatSQL: false
+  hbm2ddl:
+    auto: update
+    create_namespaces: true
+  cache:
+    use_second_level_cache: false
+    use_query_cache: true
+
+jdbc:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:2345/security?createDatabaseIfNotExist=true
+  user: turborvip
+  pass: 123456a
+
+hikari:
+  poolName: DEVELOPER_CATALOG
+  ### 5 minute
+  timeout: 300000
+  autoCommit: true
+  ### 30 minute
+  maxLifeTime: 1800000
+  connectionTimeout: 50000
+  maxPoolSize: 50
+
+  dueTime:
+    accessToken: 3000
+    refreshToken: 86400

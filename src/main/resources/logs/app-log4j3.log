@@ -1,0 +1,38 @@
+2023-08-09 22:50:43,820 [main] org.springframework.boot.StartupInfoLogger: Starting EcommerceApplication using Java 17.0.8 with PID 19657 (/home/turborvip/WorkPlace/Study/Project/ecommerce/build/classes/java/main started by turborvip in /home/turborvip/WorkPlace/Study/Project/ecommerce)
+2023-08-09 22:50:43,827 [main] org.springframework.boot.SpringApplication: The following 1 profile is active: "dev"
+2023-08-09 22:50:44,141 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-09 22:50:44,176 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 30 ms. Found 5 JPA repository interfaces.
+2023-08-09 22:50:44,524 [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'persistence' of type [com.turborvip.ecommerce.application.configuration.Persistence$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-08-09 22:50:44,745 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat initialized with port(s): 8077 (http)
+2023-08-09 22:50:44,751 [main] org.apache.juli.logging.DirectJDKLog: Initializing ProtocolHandler ["http-nio-8077"]
+2023-08-09 22:50:44,753 [main] org.apache.juli.logging.DirectJDKLog: Starting service [Tomcat]
+2023-08-09 22:50:44,753 [main] org.apache.juli.logging.DirectJDKLog: Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-08-09 22:50:44,819 [main] org.apache.juli.logging.DirectJDKLog: Initializing Spring embedded WebApplicationContext
+2023-08-09 22:50:44,820 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 902 ms
+2023-08-09 22:50:44,850 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2023-08-09 22:50:44,851 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
+2023-08-09 22:50:44,965 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@4cc12db2
+2023-08-09 22:50:44,966 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
+2023-08-09 22:50:44,966 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2023-08-09 22:50:44,966 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
+2023-08-09 22:50:44,994 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@39c87b42
+2023-08-09 22:50:44,994 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
+2023-08-09 22:50:45,029 [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-09 22:50:45,060 [main] org.hibernate.Version: HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-08-09 22:50:45,062 [main] org.hibernate.cfg.Environment: HHH000406: Using bytecode reflection optimizer
+2023-08-09 22:50:45,192 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-09 22:50:45,291 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-09 22:50:45,515 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-09 22:50:46,075 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-09 22:50:46,180 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-09 22:50:46,274 [main] org.springframework.core.annotation.AnnotationTypeMapping: Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.1. Please annotate the following attributes in @org.hibernate.validator.constraints.NotEmpty with appropriate @AliasFor declarations: [payload, groups, message]
+2023-08-09 22:50:46,274 [main] org.springframework.core.annotation.AnnotationTypeMapping: Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.1. Please annotate the following attributes in @org.hibernate.validator.constraints.NotEmpty with appropriate @AliasFor declarations: [payload, groups, message]
+2023-08-09 22:50:46,413 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory: Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-08-09 22:50:46,950 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-09 22:50:47,135 [main] org.springframework.security.web.DefaultSecurityFilterChain: Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d577add, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@712adc04, org.springframework.security.web.context.SecurityContextHolderFilter@7d2d7a85, org.springframework.security.web.header.HeaderWriterFilter@1a262e93, org.springframework.security.web.authentication.logout.LogoutFilter@6ad2a8db, com.turborvip.ecommerce.application.security.JwtAuthenticationFilter@57dd4bc9, org.springframework.security.web.session.ConcurrentSessionFilter@e9e25b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55fbebba, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a6ae0f0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@165634aa, org.springframework.security.web.session.SessionManagementFilter@16c9ec5b, org.springframework.security.web.access.ExceptionTranslationFilter@785ba20d, org.springframework.security.web.access.intercept.AuthorizationFilter@7cf618f3]
+2023-08-09 22:50:47,288 [main] org.apache.juli.logging.DirectJDKLog: Starting ProtocolHandler ["http-nio-8077"]
+2023-08-09 22:50:47,297 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat started on port(s): 8077 (http) with context path ''
+2023-08-09 22:50:47,305 [main] org.springframework.boot.StartupInfoLogger: Started EcommerceApplication in 3.728 seconds (process running for 4.146)
+2023-08-09 22:50:54,909 [SpringApplicationShutdownHook] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-09 22:50:54,910 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Shutdown initiated...
+2023-08-09 22:50:56,265 [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Shutdown completed.

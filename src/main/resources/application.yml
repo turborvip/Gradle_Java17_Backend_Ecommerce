@@ -1,0 +1,23 @@
+#application.yml
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+---
+
+spring:
+  application:
+    name: template
+  main:
+    banner-mode : off
+    sources : com.turborvip.ecommerce
+  output:
+    ansi:
+      enabled: ALWAYS
+
