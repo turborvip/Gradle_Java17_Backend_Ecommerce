@@ -67,12 +67,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     List<Token> listByUser = tokenService.findByUserId(refreshTokenUsed.getCreateBy().getId());
                     // back list
 
+                    // remove
+                    listByUser.forEach(tokenRepository::delete);
                     // send mail
                     new GMailerServiceImpl().sendEmail(refreshTokenUsedBD.getCreateBy().getEmail(),
                             "Warning warning !!! Turborvip app",
                             "Another try attach your account you should change password now!");
 
-                    listByUser.forEach(tokenRepository::delete);
+
                     throw new ForbiddenException("Some thing wrong happened ! Please re login ! ");
                 }
 

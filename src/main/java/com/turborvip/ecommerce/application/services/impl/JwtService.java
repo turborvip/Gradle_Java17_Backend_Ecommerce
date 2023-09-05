@@ -1,5 +1,6 @@
 package com.turborvip.ecommerce.application.services.impl;
 
+import com.turborvip.ecommerce.application.configuration.EcommerceProperties;
 import com.turborvip.ecommerce.application.https.response.AuthResponse;
 import com.turborvip.ecommerce.application.services.TokenService;
 import com.turborvip.ecommerce.application.services.UserDeviceService;
@@ -24,8 +25,8 @@ import java.util.*;
 @Slf4j
 public class JwtService {
 
-    private final Long dueTimeAccessToken = 3000L;
-    private final Long dueTimeRefreshToken = 86400L;
+    @Autowired
+    EcommerceProperties ecommerceProperties;
 
     @Autowired
     private final TokenService tokenService;
@@ -45,31 +46,32 @@ public class JwtService {
 
             // TODO generate jwt
             Timestamp now = new Timestamp(System.currentTimeMillis());
-            Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + dueTimeAccessToken * 1000);
+            Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + ecommerceProperties.getAccessTokenDueTime() * 1000L);
             String jwtGenerate = this.generateTokenUtil(user.getUsername(), roles, privateKey, expiredTime);
 
             // TODO check device
             UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
             if (userDevice != null) {
-                userDeviceService.updateLastLogin(now, userDevice.getId());
+                userDevice = userDeviceService.updateLastLogin(now, userDevice.getId());
             } else {
-                UserDevice userDeviceNew = new UserDevice(DEVICE_ID, now, null, null, null);
+                UserDevice userDeviceNew = new UserDevice(DEVICE_ID,"active",now, null, null, null);
                 userDeviceNew.setCreateBy(user);
                 userDeviceNew.setUpdateBy(user);
                 userDevice = userDeviceService.create(userDeviceNew);
             }
 
             // TODO update or create token
-            Token tokenExisted = tokenService.findFirstTokenByUserIdAndTypeAndDeviceId(user.getId(), "Access", DEVICE_ID).orElse(null);
+            Token tokenExisted = tokenService.findFirstTokenByUserIdAndNameAndDeviceId(user.getId(), "Access", DEVICE_ID).orElse(null);
             if (tokenExisted != null) {
                 // update value, publicKey, expiredTime, updateAt
                 tokenService.updateTokenWithValueExpiredTime(tokenExisted, now, jwtGenerate, expiredTime, publicKeyString, null);
             } else {
-                Token token = new Token(null, null, "Access", jwtGenerate, publicKeyString, new ArrayList<>(), expiredTime, userDevice);
+                Token token = new Token("Access", null, "Bear", jwtGenerate, publicKeyString, new ArrayList<>(), expiredTime, userDevice);
                 token.setCreateBy(user);
                 token.setUpdateBy(user);
                 tokenService.create(token);
             }
+
             return jwtGenerate;
         }catch (Exception exception){
             log.error("generate access Token fail! " + exception.getMessage());
@@ -89,28 +91,28 @@ public class JwtService {
             String publicKeyString = Base64.getEncoder().encodeToString(publicKey.getEncoded());
             // TODO generate jwt
             Timestamp now = new Timestamp(System.currentTimeMillis());
-            Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + dueTimeRefreshToken * 1000);
+            Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + ecommerceProperties.getRefreshTokenDueTime() * 1000L);
 
             String jwtGenerate = this.generateTokenUtil(user.getUsername(), roles, privateKey, expiredTime);
 
             // TODO check device
             UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
             if (userDevice != null) {
-                userDeviceService.updateLastLogin(now, userDevice.getId());
+                userDevice = userDeviceService.updateLastLogin(now, userDevice.getId());
             } else {
-                UserDevice userDeviceNew = new UserDevice(DEVICE_ID, now, null, null, null);
+                UserDevice userDeviceNew = new UserDevice(DEVICE_ID,"active",now, null, null, null);
                 userDeviceNew.setCreateBy(user);
                 userDeviceNew.setUpdateBy(user);
                 userDevice = userDeviceService.create(userDeviceNew);
             }
 
             // TODO check token
-            Token tokenExisted = tokenService.findFirstTokenByUserIdAndTypeAndDeviceId(user.getId(), "Refresh", DEVICE_ID).orElse(null);
+            Token tokenExisted = tokenService.findFirstTokenByUserIdAndNameAndDeviceId(user.getId(), "Refresh", DEVICE_ID).orElse(null);
             if (tokenExisted != null) {
                 // update value, publicKey, expiredTime, updateAt
                 tokenService.updateTokenWithValueExpiredTime(tokenExisted, now, jwtGenerate, expiredTime, publicKeyString, refreshToken);
             } else {
-                Token token = new Token(null, null, "Refresh", jwtGenerate, publicKeyString, new ArrayList<>(), expiredTime, userDevice);
+                Token token = new Token("Refresh", null, "Bear", jwtGenerate, publicKeyString, new ArrayList<>(), expiredTime, userDevice);
                 token.setCreateBy(user);
                 token.setUpdateBy(user);
                 tokenService.create(token);
@@ -164,7 +166,7 @@ public class JwtService {
 
 
             // 2.
-            Token refreshTokenDB = tokenService.findTokenByValueAndType(refreshToken, "Refresh")
+            Token refreshTokenDB = tokenService.findTokenByValueAndNameAndType(refreshToken, "Refresh","Bear")
                     .orElseThrow(() -> new Exception("Don't have anything refresh token"));
             Set<Role> roles = refreshTokenDB.getCreateBy().getRoles();
             List<String> roleList = new ArrayList<>();

@@ -10,5 +10,5 @@ public interface UserDeviceService {
 
     UserDevice create(UserDevice userDevice);
 
-    int updateLastLogin(Timestamp lastLoginAt,Long userDeviceId);
+    UserDevice updateLastLogin(Timestamp lastLoginAt, Long userDeviceId) throws Exception;
 }

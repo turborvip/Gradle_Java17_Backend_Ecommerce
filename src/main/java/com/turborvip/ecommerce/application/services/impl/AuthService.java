@@ -64,22 +64,18 @@ public class AuthService {
                 user = userRepository.findByUsername(authRequest.getUsername()).orElse(null);
             }
 
-            List<Role> role = null;
+            Set<Role> roleDB = null;
             if (user != null) {
-                role = roleCusRepo.findByUsers_Username(user.getUsername());
+                roleDB = roleCusRepo.findByUsers_Username(user.getUsername());
             }
 
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            Set<Role> set = new HashSet<>();
-            assert role != null;
-            role.forEach(c -> set.add(new Role(EnumRole.valueOf(c.getRoleName().name()))));
-            user.setRoles(set);
-            set.forEach(i -> authorities.add(new SimpleGrantedAuthority(i.getRoleName().toString())));
+            assert roleDB != null;
+            user.setRoles(roleDB);
+            roleDB.forEach(i -> authorities.add(new SimpleGrantedAuthority(i.getRoleName().toString())));
 
             String DEVICE_ID = request.getHeader(USER_AGENT);
             List<String> roles = authorities.stream().map(GrantedAuthority::getAuthority).toList();
-
-
             var jwtToken = jwtService.generateToken(user, roles, DEVICE_ID);
             var jwtRefreshToken = jwtService.generateRefreshToken(user, roles, DEVICE_ID, null);
             AuthResponse authResponse = new AuthResponse(jwtToken,jwtRefreshToken);

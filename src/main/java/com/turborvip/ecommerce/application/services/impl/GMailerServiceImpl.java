@@ -14,10 +14,10 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
+import com.turborvip.ecommerce.application.configuration.EcommerceProperties;
 import com.turborvip.ecommerce.application.services.GMailerService;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -28,17 +28,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 
 @Service
 public class GMailerServiceImpl implements GMailerService {
-
-    private static final String fromEmail = "turborvip@gmail.com";
-    private final Gmail service;
-
     @Autowired
-    private Environment env;
+    EcommerceProperties ecommerceProperties;
+    private final Gmail service;
 
     public GMailerServiceImpl() throws Exception {
         // Build a new authorized API client service.
@@ -52,7 +50,7 @@ public class GMailerServiceImpl implements GMailerService {
     public Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory) throws IOException {
         // Load client secrets.
 
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailerServiceImpl.class.getResourceAsStream("/secret/client_secret_302252990150-3sdef222mvo6t2h6p6hnojmkas1767vk.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(Objects.requireNonNull(GMailerServiceImpl.class.getResourceAsStream("/secret/client_secret_302252990150-3sdef222mvo6t2h6p6hnojmkas1767vk.apps.googleusercontent.com.json"))));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -72,7 +70,7 @@ public class GMailerServiceImpl implements GMailerService {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
-        email.setFrom(new InternetAddress(fromEmail));
+        email.setFrom(new InternetAddress("turborvip@gmail.com"));
         email.addRecipient(javax.mail.Message.RecipientType.TO,
                 new InternetAddress(to));
         email.setSubject(subject);

@@ -1,49 +1,32 @@
 # application-dev.yml
 server:
   port : 8077
-#  connection-timeout: 5s
-  tomcat:
-    accessors:
-      enabled : true
+  connection-timeout: 5s
+ecommerce:
+  # token
+  accessTokenDueTime:  3000
+  refreshTokenDueTime: 86400
 
-spring:
-  jpa:
-    database: POSTGRESQL
+  # jdbc
+  jdbcDriverClassName: org.postgresql.Driver
+  jdbcUrl:  jdbc:postgresql://localhost:2345/ecommerce?createDatabaseIfNotExist=true
+  jdbcUser: turborvip
+  jdbcPass: 123456a
 
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:2345/security?createDatabaseIfNotExist=true
-    username: turborvip
-    password: 123456a
-    driverClassName: org.postgresql.Driver
+  # hikari
+  hikariPoolName: DEVELOPER_CATALOG
+  hikariTimeout: 300000 # 5 minute
+  hikariAutoCommit: true
+  hikariMaxLifeTime: 1800000 # 30 minute
+  hikariConnectionTimeout: 50000
+  hikariMaxPoolSize: 80
 
-hibernate:
-  dialect: org.hibernate.dialect.PostgresPlusDialect
-  showSQL: false
-  formatSQL: false
-  hbm2ddl:
-    auto: update
-    create_namespaces: true
-  cache:
-    use_second_level_cache: false
-    use_query_cache: true
+  # hibernate
+  hibernateDialect: org.hibernate.dialect.PostgresPlusDialect
+  hibernateShowSQL: false
+  hibernateFormatSQL: false
+  hbm2ddlAuto: update
+  hbm2ddlCreateNamespaces: true
 
-jdbc:
-  driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:2345/security?createDatabaseIfNotExist=true
-  user: turborvip
-  pass: 123456a
-
-hikari:
-  poolName: DEVELOPER_CATALOG
-  ### 5 minute
-  timeout: 300000
-  autoCommit: true
-  ### 30 minute
-  maxLifeTime: 1800000
-  connectionTimeout: 50000
-  maxPoolSize: 50
-
-  dueTime:
-    accessToken: 3000
-    refreshToken: 86400
+  # gmail
+  fromEmail: turborvip@gmail.com

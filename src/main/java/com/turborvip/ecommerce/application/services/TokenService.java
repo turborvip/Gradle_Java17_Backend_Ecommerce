@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface TokenService {
     Token create(Token token);
 
-    Optional<Token> findFirstTokenByUserIdAndTypeAndDeviceId(Long userId, String type, String DeviceId);
+    Optional<Token> findFirstTokenByUserIdAndNameAndDeviceId(Long userId, String name, String DeviceId);
 
     void delete(Long tokenId);
 
@@ -21,7 +21,7 @@ public interface TokenService {
 
     Optional<Token> findFirstTokenByValue(String value);
 
-    Optional<Token> findTokenByValueAndType(String tokenValue, String type);
+    Optional<Token> findTokenByValueAndNameAndType(String tokenValue,String name ,String type);
 
     List<Token> findListTokenExpired();
 

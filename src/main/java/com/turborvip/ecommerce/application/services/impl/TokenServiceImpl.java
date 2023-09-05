@@ -1,6 +1,7 @@
 package com.turborvip.ecommerce.application.services.impl;
 
 import com.turborvip.ecommerce.application.repositories.TokenRepository;
+import com.turborvip.ecommerce.application.repositories.UserDeviceRepository;
 import com.turborvip.ecommerce.application.services.TokenService;
 import com.turborvip.ecommerce.domain.entity.Token;
 import jakarta.transaction.Transactional;
@@ -10,16 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
 public class TokenServiceImpl implements TokenService {
+    private final UserDeviceRepository userDeviceRepository;
     @Autowired
     private final TokenRepository tokenRepository;
 
@@ -29,8 +28,9 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public Optional<Token> findFirstTokenByUserIdAndTypeAndDeviceId(Long userId, String type, String DeviceId) {
-        return tokenRepository.findFirstByCreateBy_IdAndTypeAndUserDevice_DeviceID(userId, type, DeviceId);
+    public Optional<Token> findFirstTokenByUserIdAndNameAndDeviceId(Long userId, String name, String deviceId) {
+
+        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_DeviceID(userId, name, deviceId);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public List<Token> findListTokenByUserAndDevice(Long userId, String deviceId) {
-        return tokenRepository.findByCreateBy_IdAndUserDevice_DeviceID(userId, deviceId);
+        return tokenRepository.findByCreateBy_IdAndUserDevices_DeviceID(userId, deviceId);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public Optional<Token> findTokenByValueAndType(String tokenValue, String type) {
-        return tokenRepository.findFirstByValueAndType(tokenValue, type);
+    public Optional<Token> findTokenByValueAndNameAndType(String tokenValue, String name, String type) {
+        return tokenRepository.findByValueAndNameAndType(tokenValue, name, type);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Optional<Token> findFirstAccessTokenByUserIdAndUserDevice(Long userId, String userDevice) {
-        return tokenRepository.findFirstByCreateBy_IdAndTypeAndUserDevice_DeviceID(userId, "Bear", userDevice);
+        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_DeviceID(userId, "Bear", userDevice);
     }
 
     @Override

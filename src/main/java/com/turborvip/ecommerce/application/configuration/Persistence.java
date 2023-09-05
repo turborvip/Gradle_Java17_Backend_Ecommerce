@@ -5,6 +5,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -33,37 +35,8 @@ import java.util.Properties;
 public class Persistence {
 
     private static final HikariConfig hikariConfig = new HikariConfig();
-    @Value("${jdbc:driverClassName}")
-    private String driverClassName;
-    @Value("${jdbc:url}")
-    private String jdbcUrl;
-    @Value("${jdbc:user}")
-    private String username;
-    @Value("${jdbc:pass}")
-    private String password;
-    @Value("${hikari:poolName}")
-    private String poolName;
-    @Value("${hikari:timeout}")
-    private String timeout;
-    @Value("${hikari:autoCommit}")
-    private String autoCommit;
-    @Value("${hikari:maxLifeTime}")
-    private String maxLifeTime;
-    @Value("${hikari:connectionTimeout}")
-    private String connectionTimeout;
-    @Value("${hikari:maxPoolSize}")
-    private String maxPoolSize;
-    @Value("${hibernate:hbm2ddl:auto}")
-    private String hbm2ddlAuto;
-    @Value("${hibernate:dialect}")
-    private String dialect;
-    @Value("${hibernate:hbm2dll:create_namespaces}")
-    private String createNamespaces;
-    @Value("${hibernate:showSQL}")
-    private String showSQL;
-    @Value("${hibernate:formatSQL}")
-    private String formatSQL;
-
+    @Autowired
+    EcommerceProperties ecommerceProperties;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -79,13 +52,13 @@ public class Persistence {
         return entityManagerFactoryBean;
     }
 
-    final Properties additionalProperties() {
+    final @NotNull Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgresPlusDialect");
-        hibernateProperties.setProperty("hibernate.hbm2dll.create_namespaces", "true");
-        hibernateProperties.setProperty("hibernate.show_sql", "false");
-        hibernateProperties.setProperty("hibernate.format_sql", "false");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", ecommerceProperties.getHbm2ddlAuto());
+        hibernateProperties.setProperty("hibernate.dialect", ecommerceProperties.getHibernateDialect());
+        hibernateProperties.setProperty("hibernate.hbm2dll.create_namespaces", ecommerceProperties.getHbm2ddlCreateNamespaces());
+        hibernateProperties.setProperty("hibernate.show_sql", ecommerceProperties.getHibernateShowSQL());
+        hibernateProperties.setProperty("hibernate.format_sql", ecommerceProperties.getHibernateFormatSQL());
 //        hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", env.getProperty("hibernate.cache.use_second_level_cache"));
 //        hibernateProperties.setProperty("hibernate.cache.use_query_cache", env.getProperty("hibernate.cache.use_query_cache"));
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
@@ -94,17 +67,17 @@ public class Persistence {
 
     @Bean
     public DataSource dataSource() {
-        hikariConfig.setDriverClassName("org.postgresql.Driver");
-        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:2345/security?createDatabaseIfNotExist=true");
-        hikariConfig.setUsername("turborvip");
-        hikariConfig.setPassword("123456a");
-        hikariConfig.setPoolName("DEVELOPER_CATALOG");
-        hikariConfig.setMaximumPoolSize(Integer.parseInt("50"));
+        hikariConfig.setDriverClassName(ecommerceProperties.getJdbcDriverClassName());
+        hikariConfig.setJdbcUrl(ecommerceProperties.getJdbcUrl());
+        hikariConfig.setUsername(ecommerceProperties.getJdbcUser());
+        hikariConfig.setPassword(ecommerceProperties.getJdbcPass());
+        hikariConfig.setPoolName(ecommerceProperties.getHikariPoolName());
+        hikariConfig.setMaximumPoolSize(ecommerceProperties.getHikariMaxPoolSize());
         // time which is calculator from not activity, after that time connection was move to pool!
-        hikariConfig.setIdleTimeout(Long.parseLong("300000"));
-        hikariConfig.setAutoCommit(Boolean.parseBoolean("true"));
-        hikariConfig.setMaxLifetime(Long.parseLong("1800000"));
-        hikariConfig.setConnectionTimeout(Long.parseLong("50000"));
+        hikariConfig.setIdleTimeout(ecommerceProperties.getHikariTimeout());
+        hikariConfig.setAutoCommit(Boolean.parseBoolean(ecommerceProperties.getHikariAutoCommit()));
+        hikariConfig.setMaxLifetime(ecommerceProperties.getHikariMaxLifeTime());
+        hikariConfig.setConnectionTimeout(ecommerceProperties.getHikariConnectionTimeout());
         HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
         return new HikariDataSource(hikariConfig);
     }

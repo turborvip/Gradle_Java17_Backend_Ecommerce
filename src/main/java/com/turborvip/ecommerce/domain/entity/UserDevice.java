@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 
 @Entity
@@ -21,11 +21,11 @@ import java.sql.Timestamp;
 public class UserDevice extends AbstractBase {
 
     @NotEmpty(message = "Device id must not be empty")
-    @Column(name = "device_id")
+    @Column(name = "device_id",unique = true)
     private String deviceID;
 
     @Column(name = "status")
-    private String status = "active";
+    private String status;
 
     @NotEmpty(message = "Last login at must not be empty")
     @Column(name = "last_login_at")
@@ -40,11 +40,4 @@ public class UserDevice extends AbstractBase {
     @Column(name = "unlocked_at")
     private Timestamp unlockedAt;
 
-    public UserDevice(String deviceID, Timestamp lastLoginAt, Timestamp lockedAt, Timestamp lockedUntil, Timestamp unlockedAt) {
-        this.deviceID = deviceID;
-        this.lastLoginAt = lastLoginAt;
-        this.lockedAt = lockedAt;
-        this.lockedUntil = lockedUntil;
-        this.unlockedAt = unlockedAt;
-    }
 }

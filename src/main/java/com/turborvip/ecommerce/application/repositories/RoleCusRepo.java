@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface RoleCusRepo extends JpaRepository<Role, Long> {
-     List<Role> findByUsers_Username(String username);
+     Set<Role> findByUsers_Username(String username);
 
      List<Role> findByUsers_Id(Long id);
 }

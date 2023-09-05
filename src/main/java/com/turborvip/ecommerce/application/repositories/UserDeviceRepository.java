@@ -15,9 +15,4 @@ import java.util.Optional;
 public interface UserDeviceRepository extends JpaRepository<UserDevice, Long> {
     Optional<UserDevice> findFirstByCreateBy_IdAndDeviceID(Long id, String deviceID);
 
-    @Transactional
-    @Modifying
-    @Query("update UserDevice u set u.lastLoginAt = :lastLoginAt where u.id = :id")
-    int updateLastLoginAtById(@Param("lastLoginAt") Timestamp lastLoginAt, @Param("id") Long id);
-
 }

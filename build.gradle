@@ -24,7 +24,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
+    implementation 'org.jetbrains:annotations:24.0.0'
+    compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -38,6 +39,8 @@ dependencies {
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
 	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+	implementation group: 'org.json', name: 'json', version: '20090211'
 
 	// send mail
 	implementation group: 'com.google.api-client', name: 'google-api-client', version: '2.2.0'

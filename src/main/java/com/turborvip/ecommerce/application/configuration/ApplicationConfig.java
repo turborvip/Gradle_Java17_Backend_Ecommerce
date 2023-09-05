@@ -1,8 +1,11 @@
 package com.turborvip.ecommerce.application.configuration;
 
+import com.turborvip.ecommerce.application.constants.EnumRole;
 import com.turborvip.ecommerce.application.repositories.UserRepository;
 import com.turborvip.ecommerce.application.services.UserService;
-import io.jsonwebtoken.*;
+import com.turborvip.ecommerce.domain.entity.Role;
+import com.turborvip.ecommerce.domain.entity.User;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +19,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,8 +29,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 @Configuration
 @EnableScheduling
@@ -62,7 +63,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    CommandLineRunner run(UserService userService, Environment environment) {
+    CommandLineRunner run(UserService userService) {
         return args -> {
             /*userService.saveRole(new Role(null, EnumRole.ROLE_USER));
             userService.saveRole(new Role(null, EnumRole.ROLE_SUPER_ADMIN));
@@ -96,7 +97,6 @@ public class ApplicationConfig {
             userService.addToUser("turborvipAdmin", String.valueOf(EnumRole.ROLE_ADMIN));
             userService.addToUser("turborvipManager", String.valueOf(EnumRole.MANAGER));*/
             //test
-
         };
     }
 
