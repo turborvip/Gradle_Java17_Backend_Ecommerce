@@ -6,10 +6,10 @@ public class DevMessageConstant {
         public static final String NOT_FOUND_OBJECT_BY_ID = "Can not found %s with id = %s";
         public static final String OBJECT_IS_EMPTY = "This object is empty ";
         public static final String LOGOUT = "Logout successfully";
-        public static final String  LOGIN_FAIL= "Login fail, please check your username and password!";
-        public static final String LOGIN_SUCCESS= "Login successfully!";
-        public static final String REFRESH_TOKEN_SUCCESS= "Refresh token successfully!";
-        public static final String REFRESH_TOKEN_FAIL= "Refresh token fail and you can re-login to use!";
+        public static final String LOGIN_FAIL = "Login fail, please check your username and password!";
+        public static final String LOGIN_SUCCESS = "Login successfully!";
+        public static final String REFRESH_TOKEN_SUCCESS = "Refresh token successfully!";
+        public static final String REFRESH_TOKEN_FAIL = "Refresh token fail and you can re-login to use!";
         public static final String WRITE_DATA_SUCCESS = "Write data to excel file success";
         public static final String WRITE_DATA_FAILED = "Write data to excel file success";
         public static final String SEARCH_ONLY_FIELD = "You can only search on one field";
@@ -20,7 +20,7 @@ public class DevMessageConstant {
         public static final String REGISTER_SUCCESS = "Sent request register account success!";
         public static final String CONFIRM_SUCCESSFUL = "Confirm account successful!";
         public static final String TOKEN_EXPIRED = "This token is expired!";
-        public static final String TOKEN_INVALID= "This token is not valid!";
+        public static final String TOKEN_INVALID = "This token is not valid!";
         public static final String CONFIRMED = "This account confirmed! ";
         public static final String DATA_WAS_DELETE = "This object id = %s was delete";
         public static final String DATE_WAS_DISABLE = "This object id = %s was disable";
@@ -49,6 +49,12 @@ public class DevMessageConstant {
         public static final String NOTIFICATION_DELETE_FAILED = "Remove object by id is failed!";
         public static final String NOTIFICATION_DELETE_SUCCESS = "Remove object by id is success!";
         public static final String AUTHORIZED = "You don't have authorized to action this request!";
+        public static final String EXIST_DEVICE = "Exist device";
+
+        public static final String PASSWORD_NOT_EMPTY = "Password not empty!";
+        public static final String PASSWORD_WRONG_FORMAT = "Password not wrong format!";
+        public static final String PHONE_WRONG_FORMAT = "Phone not wrong format!";
+        public static final String EMAIL_WRONG_FORMAT = "Email not wrong format!";
 
         private Common() {
         }

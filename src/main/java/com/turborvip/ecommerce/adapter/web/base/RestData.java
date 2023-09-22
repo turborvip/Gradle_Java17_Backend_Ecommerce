@@ -12,6 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RestData<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)//@JsonInclude : This property will include Json if it different null
+    private String errorMessage;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)//@JsonInclude : This property will include Json if it different null
     private String userMessage;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -32,12 +35,23 @@ public class RestData<T> {
         this.message = userMessage;
     }
 
-    public RestData( T data, T option) {
+    public RestData(T data, T option) {
         this.metadata = data;
         this.option = option;
 
-    }  public RestData( T data) {
+    }
+
+    public RestData(T data) {
         this.metadata = data;
+    }
+
+
+    public RestData(String data,Boolean isError) {
+        if (isError){
+            this.errorMessage = data;
+        }else{
+            this.userMessage = data;
+        }
     }
 
     public RestData(String userMessage, String devMessage, Object o, Object o1, Object o2) {
@@ -45,10 +59,10 @@ public class RestData<T> {
     }
 
     public static RestData<?> error(String userMessage, String devMessage) {
-        return new RestData<>( userMessage, devMessage, null, null, null);
+        return new RestData<>(userMessage, devMessage, null, null, null);
     }
 
     public static RestData<?> error(String userMessage) {
-        return new RestData<>(userMessage, null);
+        return new RestData<>(userMessage,true);
     }
 }

@@ -10,6 +10,4 @@ import java.util.Set;
 @Repository
 public interface RoleCusRepo extends JpaRepository<Role, Long> {
      Set<Role> findByUsers_Username(String username);
-
-     List<Role> findByUsers_Id(Long id);
 }

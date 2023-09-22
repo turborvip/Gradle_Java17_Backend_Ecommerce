@@ -18,7 +18,6 @@ import java.util.*;
 @Transactional
 @Slf4j
 public class TokenServiceImpl implements TokenService {
-    private final UserDeviceRepository userDeviceRepository;
     @Autowired
     private final TokenRepository tokenRepository;
 
@@ -29,8 +28,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Optional<Token> findFirstTokenByUserIdAndNameAndDeviceId(Long userId, String name, String deviceId) {
-
-        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_DeviceID(userId, name, deviceId);
+        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_Device_UserAgent(userId, name, deviceId);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public List<Token> findListTokenByUserAndDevice(Long userId, String deviceId) {
-        return tokenRepository.findByCreateBy_IdAndUserDevices_DeviceID(userId, deviceId);
+        return tokenRepository.findByCreateBy_IdAndUserDevices_Device_UserAgent(userId, deviceId);
     }
 
     @Override
@@ -75,7 +73,7 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Optional<Token> findFirstAccessTokenByUserIdAndUserDevice(Long userId, String userDevice) {
-        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_DeviceID(userId, "Bear", userDevice);
+        return tokenRepository.findByCreateBy_IdAndNameAndUserDevices_Device_UserAgent(userId, "Bear", userDevice);
     }
 
     @Override

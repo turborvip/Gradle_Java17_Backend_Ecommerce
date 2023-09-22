@@ -66,7 +66,7 @@ public class AuthService {
 
             Set<Role> roleDB = null;
             if (user != null) {
-                roleDB = roleCusRepo.findByUsers_Username(user.getUsername());
+                roleDB = user.getRoles();
             }
 
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -82,7 +82,7 @@ public class AuthService {
             return VsResponseUtil.ok(LOGIN_SUCCESS, authResponse);
         } catch (Exception err) {
             log.warn(err.getMessage());
-            return VsResponseUtil.error(FORBIDDEN, DevMessageConstant.Common.LOGIN_FAIL);
+            return VsResponseUtil.error(FORBIDDEN, err.getMessage());
         }
     }
 

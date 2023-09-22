@@ -10,7 +10,6 @@ public class CommonConstant {
     public static final String ROLE_SUPER_ADMIN = "super_admin";
     public static final String ROLE_USER="user";
     public static final String ROLE__ADMIN="admin";
-
     public static final String SORT_BY_TIME = "create_date";
     public static final String SORT_BY_TIME2 = "createDate";
     public static final String FORMAT_DATE_PATTERN = "dd/MM/yyyy";
@@ -18,6 +17,11 @@ public class CommonConstant {
     public static final SimpleDateFormat FORMAT_DATE = new SimpleDateFormat(FORMAT_DATE_PATTERN);
     public static final SimpleDateFormat FORMAT_DATE_DETAIL = new SimpleDateFormat(FORMAT_DATE_PATTERN_DETAIL);
 
+    // Bao gồm cả chữ hoa, chữ thường, số, ký tự đặc biệt và ít nhất 8 kỹ tự
+    public static String REGEX_PASSWORD = "^(?=(.*[0-9]))(?=.*[\\\\!@#$%^&*()\\\\[\\\\]{}\\\\-_+=~`|:;\\\"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}$";
 
+    public static String REGEX_EMAIL = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+
+    public static String REGEX_PHONE_NUMBER = "^(0[1-9][0-9]{8}|\\\\+84[1-9][0-9]{8})$";
 
 }

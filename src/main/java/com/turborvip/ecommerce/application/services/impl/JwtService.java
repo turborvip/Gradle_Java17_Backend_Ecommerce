@@ -2,12 +2,10 @@ package com.turborvip.ecommerce.application.services.impl;
 
 import com.turborvip.ecommerce.application.configuration.EcommerceProperties;
 import com.turborvip.ecommerce.application.https.response.AuthResponse;
+import com.turborvip.ecommerce.application.services.DeviceService;
 import com.turborvip.ecommerce.application.services.TokenService;
 import com.turborvip.ecommerce.application.services.UserDeviceService;
-import com.turborvip.ecommerce.domain.entity.Role;
-import com.turborvip.ecommerce.domain.entity.Token;
-import com.turborvip.ecommerce.domain.entity.User;
-import com.turborvip.ecommerce.domain.entity.UserDevice;
+import com.turborvip.ecommerce.domain.entity.*;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +32,27 @@ public class JwtService {
     @Autowired
     private final UserDeviceService userDeviceService;
 
-    public String generateToken(User user, List<String> roles, String DEVICE_ID) {
+    @Autowired
+    private final DeviceService deviceService;
+
+    public String generateToken(User user, List<String> roles, String DEVICE_ID) throws Exception {
         try {
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+
+            // TODO check device
+            Device device = deviceService.findDeviceByUserAgent(DEVICE_ID);
+            if (device == null) {
+                device = deviceService.create(new Device(DEVICE_ID, null, null, "active", now, null, null, null));
+            }
+            // TODO check user device
+            UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
+            if (userDevice != null) {
+                deviceService.updateLastLogin(now, userDevice.getDevice().getId());
+            } else {
+                // create a section...
+                userDevice = userDeviceService.create(new UserDevice(new UserDeviceKey(user.getId(), device.getId()), user, device));
+            }
+
             // TODO generate secret key
             KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
             keyPairGen.initialize(4096);
@@ -45,20 +62,8 @@ public class JwtService {
             String publicKeyString = Base64.getEncoder().encodeToString(publicKey.getEncoded());
 
             // TODO generate jwt
-            Timestamp now = new Timestamp(System.currentTimeMillis());
             Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + ecommerceProperties.getAccessTokenDueTime() * 1000L);
             String jwtGenerate = this.generateTokenUtil(user.getUsername(), roles, privateKey, expiredTime);
-
-            // TODO check device
-            UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
-            if (userDevice != null) {
-                userDevice = userDeviceService.updateLastLogin(now, userDevice.getId());
-            } else {
-                UserDevice userDeviceNew = new UserDevice(DEVICE_ID,"active",now, null, null, null);
-                userDeviceNew.setCreateBy(user);
-                userDeviceNew.setUpdateBy(user);
-                userDevice = userDeviceService.create(userDeviceNew);
-            }
 
             // TODO update or create token
             Token tokenExisted = tokenService.findFirstTokenByUserIdAndNameAndDeviceId(user.getId(), "Access", DEVICE_ID).orElse(null);
@@ -71,17 +76,32 @@ public class JwtService {
                 token.setUpdateBy(user);
                 tokenService.create(token);
             }
-
             return jwtGenerate;
-        }catch (Exception exception){
-            log.error("generate access Token fail! " + exception.getMessage());
-            return null;
-        }
 
+        } catch (Exception exception) {
+            log.error("generate access Token fail! " + exception.getMessage());
+            throw exception;
+        }
     }
 
-    public String generateRefreshToken(User user, List<String> roles, String DEVICE_ID, String refreshToken) throws NoSuchAlgorithmException {
-        try{
+    public String generateRefreshToken(User user, List<String> roles, String DEVICE_ID, String refreshToken) throws Exception {
+        try {
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+
+            // TODO check device
+            Device device = deviceService.findDeviceByUserAgent(DEVICE_ID);
+            if (device == null) {
+                device = deviceService.create(new Device(DEVICE_ID, null, null, "active", now, null, null, null));
+            }
+
+            // TODO check user device
+            UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
+            if (userDevice != null) {
+                deviceService.updateLastLogin(now, userDevice.getDevice().getId());
+            } else {
+                userDevice = userDeviceService.create(new UserDevice(new UserDeviceKey(user.getId(), device.getId()), user, device));
+            }
+
             // TODO generate secret key
             KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
             keyPairGen.initialize(4096);
@@ -89,22 +109,10 @@ public class JwtService {
             PrivateKey privateKey = pair.getPrivate();
             PublicKey publicKey = pair.getPublic();
             String publicKeyString = Base64.getEncoder().encodeToString(publicKey.getEncoded());
+
             // TODO generate jwt
-            Timestamp now = new Timestamp(System.currentTimeMillis());
             Timestamp expiredTime = new Timestamp(System.currentTimeMillis() + ecommerceProperties.getRefreshTokenDueTime() * 1000L);
-
             String jwtGenerate = this.generateTokenUtil(user.getUsername(), roles, privateKey, expiredTime);
-
-            // TODO check device
-            UserDevice userDevice = userDeviceService.findDeviceByUserIdAndDeviceId(user.getId(), DEVICE_ID).orElse(null);
-            if (userDevice != null) {
-                userDevice = userDeviceService.updateLastLogin(now, userDevice.getId());
-            } else {
-                UserDevice userDeviceNew = new UserDevice(DEVICE_ID,"active",now, null, null, null);
-                userDeviceNew.setCreateBy(user);
-                userDeviceNew.setUpdateBy(user);
-                userDevice = userDeviceService.create(userDeviceNew);
-            }
 
             // TODO check token
             Token tokenExisted = tokenService.findFirstTokenByUserIdAndNameAndDeviceId(user.getId(), "Refresh", DEVICE_ID).orElse(null);
@@ -118,9 +126,10 @@ public class JwtService {
                 tokenService.create(token);
             }
             return jwtGenerate;
-        }catch (Exception exception){
+
+        } catch (Exception exception) {
             log.error("generate refreshToken fail!");
-            return null;
+            throw exception;
         }
     }
 
@@ -166,7 +175,7 @@ public class JwtService {
 
 
             // 2.
-            Token refreshTokenDB = tokenService.findTokenByValueAndNameAndType(refreshToken, "Refresh","Bear")
+            Token refreshTokenDB = tokenService.findTokenByValueAndNameAndType(refreshToken, "Refresh", "Bear")
                     .orElseThrow(() -> new Exception("Don't have anything refresh token"));
             Set<Role> roles = refreshTokenDB.getCreateBy().getRoles();
             List<String> roleList = new ArrayList<>();
@@ -177,7 +186,7 @@ public class JwtService {
 
             //create refresh token
             String jwtRefreshToken = this.generateRefreshToken(refreshTokenDB.getCreateBy(), roleList, DEVICE_ID, refreshToken);
-            return new AuthResponse(jwtToken,jwtRefreshToken);
+            return new AuthResponse(jwtToken, jwtRefreshToken);
 
         } catch (Exception exception) {
             throw new Exception(exception);

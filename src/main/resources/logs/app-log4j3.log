@@ -1,105 +1,203 @@
-2023-09-05 15:56:38,180 [main] org.springframework.boot.StartupInfoLogger: Starting EcommerceApplication using Java 17.0.8 with PID 56384 (/home/turborvip/WorkPlace/Study/Project/ecommerce/build/classes/java/main started by turborvip in /home/turborvip/WorkPlace/Study/Project/ecommerce)
-2023-09-05 15:56:38,189 [main] org.springframework.boot.SpringApplication: The following 1 profile is active: "dev"
-2023-09-05 15:56:38,762 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-05 15:56:38,813 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 44 ms. Found 5 JPA repository interfaces.
-2023-09-05 15:56:39,316 [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'ecommerceProperties' of type [com.turborvip.ecommerce.application.configuration.EcommerceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-09-05 15:56:39,318 [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'persistence' of type [com.turborvip.ecommerce.application.configuration.Persistence$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-09-05 15:56:39,641 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat initialized with port(s): 8077 (http)
-2023-09-05 15:56:39,650 [main] org.apache.juli.logging.DirectJDKLog: Initializing ProtocolHandler ["http-nio-8077"]
-2023-09-05 15:56:39,652 [main] org.apache.juli.logging.DirectJDKLog: Starting service [Tomcat]
-2023-09-05 15:56:39,653 [main] org.apache.juli.logging.DirectJDKLog: Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-09-05 15:56:39,732 [main] org.apache.juli.logging.DirectJDKLog: Initializing Spring embedded WebApplicationContext
-2023-09-05 15:56:39,734 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 1375 ms
-2023-09-05 15:56:39,776 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2023-09-05 15:56:39,777 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
-2023-09-05 15:56:39,965 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@c48b543
-2023-09-05 15:56:39,967 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
-2023-09-05 15:56:39,967 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2023-09-05 15:56:39,968 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
-2023-09-05 15:56:40,014 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@6842c101
-2023-09-05 15:56:40,014 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
-2023-09-05 15:56:40,070 [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-05 15:56:40,122 [main] org.hibernate.Version: HHH000412: Hibernate ORM core version 6.2.6.Final
-2023-09-05 15:56:40,125 [main] org.hibernate.cfg.Environment: HHH000406: Using bytecode reflection optimizer
-2023-09-05 15:56:40,344 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
-2023-09-05 15:56:40,459 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-05 15:56:40,820 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
-2023-09-05 15:56:41,507 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-05 15:56:41,641 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-05 15:56:42,015 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory: Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-09-05 15:56:42,954 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-05 15:56:43,301 [main] org.springframework.security.web.DefaultSecurityFilterChain: Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@60052518, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39336f5, org.springframework.security.web.context.SecurityContextHolderFilter@209baf91, org.springframework.security.web.header.HeaderWriterFilter@70e560ef, org.springframework.security.web.authentication.logout.LogoutFilter@20a533b, com.turborvip.ecommerce.application.security.JwtAuthenticationFilter@3d84f113, org.springframework.security.web.session.ConcurrentSessionFilter@10806dbe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5982255e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e9c5db9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@36b86248, org.springframework.security.web.session.SessionManagementFilter@38a3c078, org.springframework.security.web.access.ExceptionTranslationFilter@4cb45048, org.springframework.security.web.access.intercept.AuthorizationFilter@49e54217]
-2023-09-05 15:56:43,586 [main] org.apache.juli.logging.DirectJDKLog: Starting ProtocolHandler ["http-nio-8077"]
-2023-09-05 15:56:43,612 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat started on port(s): 8077 (http) with context path ''
-2023-09-05 15:56:43,630 [main] org.springframework.boot.StartupInfoLogger: Started EcommerceApplication in 5.804 seconds (process running for 6.328)
-2023-09-05 15:56:47,315 [http-nio-8077-exec-1] org.apache.juli.logging.DirectJDKLog: Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-09-05 15:56:47,315 [http-nio-8077-exec-1] org.springframework.web.servlet.FrameworkServlet: Initializing Servlet 'dispatcherServlet'
-2023-09-05 15:56:47,316 [http-nio-8077-exec-1] org.springframework.web.servlet.FrameworkServlet: Completed initialization in 1 ms
-2023-09-05 15:56:47,597 [http-nio-8077-exec-1] com.turborvip.ecommerce.application.services.impl.JwtService: JWT claims is not empty :Key bytes can only be specified for HMAC signatures. Please specify a PublicKey or PrivateKey instance.
-2023-09-05 15:56:51,714 [http-nio-8077-exec-1] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
-METHOD = POST; REQUEST_URI = /api/v1/auth/refresh-token; REQUEST_BODY = ;
-RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Refresh token successfully!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.NyHpJFrKs7K1f1xQ46OlyYfJUTsGDTfr4fuRQws9MWm17HJjyiozz__jaeCICIorJxTyDEU0fVhHLs42yctDITR9RHXHXpJgnXf7hj5hvO5rBYB2GrTai5eoaZMbNBkbLfmBz9jSqBCgI_eh_UaTD7GsgQi5fuJ7YekFHucrsYNldPks76XdHqbODRa50Yfs4DbxbEZ-WA77jG9QUMt-srLe5vuaTUNrN5tUVBS_r2LRLcrX1znF1tv4OQCwER3esRP1VWyvTYQME8l6wbTgu0lGo-74nO4JGnFY_qq1zgKXnACoyAf_x9j8soHOr_na2eyqKvyVNlegE1fuSq8A1z-1BlX_DqzshFHAyvX9DkRSKrJcAdlDk_G4uKPuC1h4hTEMjso3IlRtg8xNimpazCTNpViLb7vjcwC4wVHpCuqaBV27budPjhXCv-aJZ6ZEM_m1Xrs7VTes7Kd5MjYSR4Zr_pF6_0pmblixurXqBT_90qieIY3mAR3LzUhQZtuTBrqJoNeXDcbRFlCPTrnANQuHJGjQSurQsOSw--YCCas4KXVAGLQZI1kSOhMXDmD6yIH7eCVaF21hSAPd7rXZoXEQeNKOElmJL7dAVB_VTZ9wwCbMCuzQ-9UhDGEylX6daeQ5l0KVKwxpg2zCiBHUb_8ESq-sIaxkGSfzhR2qEE4","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.GcHwpCttUqmTmawEbI-qi3jnBHV1imPwO1XHg0GzgX1Pejky2-q_G9Ev0-8ALR0yIyfxuvREv1s7cpXr4AC0w8ssn8qn0Rqov6XQsXuejb8KxvNnrp57DZvlu-eTfgp2OpV829ysgo_mT0-R0MDVE2CGNvIuxHwgYXH9V5WWcYbzkxdBDtMfhCvqajjm7ofCZQ0b20qTyTUw0Sd83ciYTOJnCF85GzwZIiDziadAE3HO8Zrf2Y5AAGiPPYD6M0IvOZ10_l0urFaWlIbfUsEkkJhobEngurNVj6l70Vrx-Tk5ZAV-n0whC1daVLE5LGFo_yspyToDXk268Qqr_Yc71qDbBidosVcYrdDqwtxKMAmM2z0Z6EkauXN84yV-o5xpNdeivYLhXEK8APNBvvy41d8n8tTzTFwqbqSZVfFp42z19UDMpeMu2ZCpG94h1eCq7EWbEruqtxP22HjDngAY18mgUXiq2xbAqRPhxCghqt0T9nwHwbqf0j3879W_rmnebFJo91N0YdH8ykR5uIGs-I0WMKr8neiahcMIn1Qr21YfIJCWZyD5bGkSykxtVNR9BBkCbkNYaFtw9w0VoCr3REEDnMbvdU1MEJoXbp0r8vz1vrWr0gJDTBGPltY2QJpKrx5C66cX5SUSyV-nJNkM8OwftwGo6rJ-yWdGkB3vLTo"}}; TIME_TAKEN = 4090
-2023-09-05 15:57:18,746 [http-nio-8077-exec-3] com.turborvip.ecommerce.application.services.impl.JwtService: JWT claims is not empty :Key bytes can only be specified for HMAC signatures. Please specify a PublicKey or PrivateKey instance.
-2023-09-05 15:57:23,146 [http-nio-8077-exec-3] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
-METHOD = POST; REQUEST_URI = /api/v1/auth/refresh-token; REQUEST_BODY = ;
-RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Refresh token successfully!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.a50233dyW7Oj7Xh7X4xdUEWMCcYgD3IHZBkOoVCJI5ZM5RR6Ch5hxZduTkR3VY8XBpTSjf_33KGHYn6DV0Em3OTz7Sy-CObyC56GB_SrUjlTYneJvd9qVWxuEPQywqj0YLfyTDsDG90-pQuduloLnMdRqtutCqNBV-WtYjpUwK5NBHCZEFlgZ0n_uoAgAcikSH-NQQJKm9DY76Q9-nyMGVPoo9WFmlF3EZTAxzHrFrwGKN3-PeLeXlJyRxX2VPGsqFN3Dkgc7yXdQKY8ZSy-HAnglbcdkkslV9vCjpm1IW-o6bdSLLPoz6M-GckUhP0z3A3lp4F6lOua_AnGGZpss9yr0_eSSasl7LOrI_8X_KqTlsnNhfA4ak8MXWBM5ox753Eg0KyTaB5s7W_IC3uwiA3yekHlaLWmMKWz3dXQleUbZGmLybtMokpedQAFAweBIjhiQSS-u_6cWm4OhXxAt1VP6vgSEgwVZ515A5IEK-VFTcrXcGhX_lrhPJqdfq9g9qnFjLovTvmz0NKit_k62olbtkyaVWKYNFbDSczIvqd34dj8gQ5YeW4Z1wJFdKXZ5qXnByKmSxMr_KYSjn9_Lziy7me2NkMYfyh8AyzhRrsOjkJC1rvxYQ2-W6YLEA3xNjeFCQHI7BJ85QL2YH2zU7wK8BwGvgKWKUaJg0vK0O4","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.LAZsLkePsxm6Vw1Vfmy7xM1wZPV4GxkSfBLBUJauL2qK9DOSvPQUaaUdbeGtMNjbckHN7wZUk5tHYHHVijdf6ddnz7_iL7V0TbuVHKnDZ3mwS5z6o-lDKJ6Rvj8uPxvSI92zk5sdIfyLSXZHwpRBHRcSr9VgV58k-pc1QhMTs7JM6DYWMDwEhd4yeWIZXypw3OHwEa-uYxuRC4oXqzNjdNv8MiSQX_xRXebDa77CpLloE5St_Er_0a7wv4sDn5OzkX_lMQmmOHQqp9BpBF3j6keFr3QNHtP55zdQjFCenwzJvIUDhc38m90u1MMry5P6YrEs9X-e7G7xT_V0hjA_VGFK8ocXQXLZRoM9Ks29UOHb1Ejl45Rdg1vSg-1SEr2JLI6WSzXbxAkJqiOmVBcCYjVsCFSTVCTE9IgsOtsqCJdLV8_YOZcpTNq_1xNL0T22n893BRlL-efOXsC38DAV3F9-A_MiJEFlQ9sfiyESQBaXlwQSWNGyhdeuGjgfrD-nY5F6kq9v0choXmj_1ejiGaWCafiEWm9i2fcKW5izpPcAGBoPGEk-F_tXoS9miL8tv9cRqTrGXg0z0h0Sp0kNZWy_0DCIlmitc1TfIyP_Rke-TJNXyux4aMg6eSPw7bSFX2mh6TbZe3EyvfnXPWJlMl2SaYgcD4UHs9pzChI0vHo"}}; TIME_TAKEN = 4397
-2023-09-05 15:57:49,961 [http-nio-8077-exec-4] org.apache.juli.logging.DirectJDKLog: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.lang.IllegalArgumentException: Invalid characters (CR/LF) in header error
-	at org.springframework.util.Assert.isTrue(Assert.java:140)
-	at org.springframework.security.web.firewall.FirewalledResponse.validateCrlf(FirewalledResponse.java:76)
-	at org.springframework.security.web.firewall.FirewalledResponse.setHeader(FirewalledResponse.java:53)
-	at jakarta.servlet.http.HttpServletResponseWrapper.setHeader(HttpServletResponseWrapper.java:132)
-	at jakarta.servlet.http.HttpServletResponseWrapper.setHeader(HttpServletResponseWrapper.java:132)
-	at com.turborvip.ecommerce.application.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:105)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-09-22 16:30:27,539 [main] org.springframework.boot.StartupInfoLogger: Starting EcommerceApplication using Java 17.0.8.1 with PID 25357 (/home/turborvip/WorkPlace/Study/Project/ecommerce/build/classes/java/main started by turborvip in /home/turborvip/WorkPlace/Study/Project/ecommerce)
+2023-09-22 16:30:27,547 [main] org.springframework.boot.SpringApplication: The following 1 profile is active: "dev"
+2023-09-22 16:30:28,014 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-22 16:30:28,068 [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 47 ms. Found 6 JPA repository interfaces.
+2023-09-22 16:30:28,514 [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'ecommerceProperties' of type [com.turborvip.ecommerce.application.configuration.EcommerceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-09-22 16:30:28,516 [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'persistence' of type [com.turborvip.ecommerce.application.configuration.Persistence$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-09-22 16:30:28,835 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat initialized with port(s): 8077 (http)
+2023-09-22 16:30:28,843 [main] org.apache.juli.logging.DirectJDKLog: Initializing ProtocolHandler ["http-nio-8077"]
+2023-09-22 16:30:28,846 [main] org.apache.juli.logging.DirectJDKLog: Starting service [Tomcat]
+2023-09-22 16:30:28,847 [main] org.apache.juli.logging.DirectJDKLog: Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-09-22 16:30:28,913 [main] org.apache.juli.logging.DirectJDKLog: Initializing Spring embedded WebApplicationContext
+2023-09-22 16:30:28,915 [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 1253 ms
+2023-09-22 16:30:28,966 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2023-09-22 16:30:28,968 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
+2023-09-22 16:30:29,141 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@7a64cb0c
+2023-09-22 16:30:29,143 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
+2023-09-22 16:30:29,144 [main] com.zaxxer.hikari.HikariConfig: DEVELOPER_CATALOG - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2023-09-22 16:30:29,144 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Starting...
+2023-09-22 16:30:29,187 [main] com.zaxxer.hikari.pool.HikariPool: DEVELOPER_CATALOG - Added connection org.postgresql.jdbc.PgConnection@32ab408e
+2023-09-22 16:30:29,187 [main] com.zaxxer.hikari.HikariDataSource: DEVELOPER_CATALOG - Start completed.
+2023-09-22 16:30:29,230 [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-22 16:30:29,268 [main] org.hibernate.Version: HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-09-22 16:30:29,271 [main] org.hibernate.cfg.Environment: HHH000406: Using bytecode reflection optimizer
+2023-09-22 16:30:29,450 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-09-22 16:30:29,542 [main] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-22 16:30:29,841 [main] org.hibernate.bytecode.internal.BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-09-22 16:30:29,888 [main] org.hibernate.mapping.RootClass: HHH000038: Composite-id class does not override equals(): com.turborvip.ecommerce.domain.entity.UserDeviceKey
+2023-09-22 16:30:29,888 [main] org.hibernate.mapping.RootClass: HHH000039: Composite-id class does not override hashCode(): com.turborvip.ecommerce.domain.entity.UserDeviceKey
+2023-09-22 16:30:30,482 [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-22 16:30:30,601 [main] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-22 16:30:30,880 [main] org.springframework.data.jpa.repository.query.QueryEnhancerFactory: Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-09-22 16:30:31,438 [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-22 16:30:31,654 [main] org.springframework.security.web.DefaultSecurityFilterChain: Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3884e858, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46c7c593, org.springframework.security.web.context.SecurityContextHolderFilter@31b827a6, org.springframework.security.web.header.HeaderWriterFilter@5a097a83, org.springframework.security.web.authentication.logout.LogoutFilter@46c28400, com.turborvip.ecommerce.application.security.JwtAuthenticationFilter@34ac72c3, org.springframework.security.web.session.ConcurrentSessionFilter@66f88fd3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@203b98cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22495f2f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a4c4261, org.springframework.security.web.session.SessionManagementFilter@2fb9695a, org.springframework.security.web.access.ExceptionTranslationFilter@44a7a331, org.springframework.security.web.access.intercept.AuthorizationFilter@4587675c]
+2023-09-22 16:30:31,842 [main] org.apache.juli.logging.DirectJDKLog: Starting ProtocolHandler ["http-nio-8077"]
+2023-09-22 16:30:31,856 [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat started on port(s): 8077 (http) with context path ''
+2023-09-22 16:30:31,868 [main] org.springframework.boot.StartupInfoLogger: Started EcommerceApplication in 4.645 seconds (process running for 5.148)
+2023-09-22 16:44:25,905 [http-nio-8077-exec-2] org.apache.juli.logging.DirectJDKLog: Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-22 16:44:25,905 [http-nio-8077-exec-2] org.springframework.web.servlet.FrameworkServlet: Initializing Servlet 'dispatcherServlet'
+2023-09-22 16:44:25,906 [http-nio-8077-exec-2] org.springframework.web.servlet.FrameworkServlet: Completed initialization in 1 ms
+2023-09-22 16:44:26,089 [http-nio-8077-exec-2] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: This username : turborvipTest21 is exits
+2023-09-22 16:44:26,111 [http-nio-8077-exec-2] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest21",
+    "password":"2g456aB!",
+    
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"This username : turborvipTest21 is exits"}; TIME_TAKEN = 189
+2023-09-22 16:44:33,238 [http-nio-8077-exec-4] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest22",
+    "password":"2g456aB!",
+    
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Sent request register account success!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.MGqP8VikbXPkXU2uu1uat-ZK8H2M29pEhccVBjZsOaAHsWVezEPXTJ-N0UaMlOYaSHV8H8WvnDoCHF_sAj060zB-n1__ztnREJX24VQeWo-3rliivCJHwuV95A5dlE9cElXf8I_Y4X_znYv_pPrm9OZW5vHEW_nF4aVquQyP9EVXiPjomlezn5yFwK_X4KZGe1aZBWK1et6hfbkhbox_4x7UqoPa_eaiovaKVKnBNCxrwvmC6ZQd-S5XnLHSkxR7Rf8yGgv02P5V_MXX5a78pEQFIWLFHpYzDpWAFZHG7gkMCp39KSZ7v4p6-9Y39QluD_ZDAR7mZqvfvm7Ox4BKSeQwBMM2y3QkQSJlfFDE54Nk2TW3xzLFmAt3GOsSqotjpEbMC4tUlk-Tz3tPp5enXpIN4IRQ6Dm8pLC367bEigf8YNi4Jwx_WHSN5z4-u5J1w28fEchARBFQ50bfKcvMcdhzb3NsteArnli3QRhmNgpcHDjDeM-wJVTmLjYffmGr8s4SjB_hdUx1jolE7JdW7ShLMl-ksDj00hq2HbdB9lIueEqWCdHLfyaF29DMI6B5CEMb6sS3TECjT9icxJ6eMKX_dqGGP82pd5C5pZy8cwvT9tncX_uEbX4CpzV50klpB0PjK2k3OlbzK104ctvrrF0ju-PQWQOIZfMlsN9-jVc","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.Q26CPQ8Ae7QnG9UkP_sIw5oF3lIZ9YHsCtEDu44e5mT5sjdrSe34lFwj5QTi-vrZtS3IGnFpoSFr2R3M8NTknDxeQbJrleyT2O-0CrtR19vX780mvnQCn6MfbOKdxgd22ZbwTmLN1_6NoCFNher3D0Vnux5Ba_Lpl8NGy_iusdNaAxUQtEEupUim4E2OHJa8pv9xWTNCOqhh6EPutkLs-ecDaa0-pBGODuTr8gn4SqtV_QhbSWF0W9lO8hUVo8UNyPJCJqJSMaN2MC8-6OnDNyh_-pqvBgnDB05mtXJyYVACRGdex-5Pd8bFirfvn0mQVJ1hsXG3lFy-6D59rdkUDwGbjvV6USLFBfAVqI_4NpFqMADyoAJkeloYhnKM1ZL8_5Am_NaqzaFbFYp8iB8g_v75mzIE0sapqF3hqnDynHtiLzBl5FHJC4Rzs9sqowxXzp0krC_o4kuFrEj152pGjjuJUeXwds9sAdGVfSSnHDfBodHa4DgzrvRW05q4zqxyGOAPHbxpZQ9ZGi9F1U0ajek8bBd2G_PyD-k1CWC1Npvp9fhnTuXFx4uKWldCFN5YRF2oOmrZqT99w3J3snjD8pwzqTAM3wVIX3_BMhOr6RVVVNU7lRw7NJJrSAUsb9RfzAQm9DwuQfz4J4A_-FR-JxvOiUY4PWSWPHpU6Sxla8I","profile":{"fullName":"Do Thanh Hi","email":null,"birthday":"21/19/2002","gender":"456uh","phone":"0387661380","address":"rtyj","avatar":""}}}; TIME_TAKEN = 2099
+2023-09-22 16:44:53,305 [http-nio-8077-exec-5] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: This username : turborvipTest22 is exits
+2023-09-22 16:44:53,307 [http-nio-8077-exec-5] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest22",
+    "password":"2g456aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"This username : turborvipTest22 is exits"}; TIME_TAKEN = 6
+2023-09-22 16:44:58,913 [http-nio-8077-exec-6] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest23",
+    "password":"2g456aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Sent request register account success!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.JB0_o09h65tZ7JGOcgu6YrVVtN-q5-gWVhURzRuDfDQlO2-kFS6Eo5f4McfHp9aR7-KmZinWKRXeVVDt29VtVVz858RjsiLwg34lsqPyBMgs5abWeKuQ5WSmqJEAzFjk9AAA5P-4hkfhwrUl9_0igLRfOPOefnUDQSmejokCNnCjsac2xIOKdQYA3pevUIwJacL73GGuoBT0FGYevTuzuvGSqBdpEdEMXYSDDmElM9DwmcEM5Cm0Vs7xZZwvjWXS3Z2hC88HCc-3_WOSznjlJ7gw5bkpPvtFXqk1MJcfjgY8DYP4Jhhc7-691l-UjqmFen1Pb1Dx2L707oCxX0Qu_Y7acg30QGrRiFCGwC7x14m264k8_apEullSs4A10HTnuUoeus8se6yVPNExRC68SDZWgN69matig-DtOcI4bRxWpDj4BiiN1TCvj-1eTiUr5LsVBcKI6yMbm6EjYShOWa-HY_Bo-FvnrJHPNagxTirFMcwHRq3WlZ44-mVWvYqj7ywCTDuY527QMSJihuC7W1GbrTCWW2AxLe4mxWKHIyc8C1irzsnFZNVnpt9irymt8H4iCPG9uCUu8IhQXQ242ks6sqvyBbxzxakbXTvTTdJMJGbTRZlcB6ILKf4eLrPip-xdtm6-SipwoXa9VtJyrs2rzrqjtFkcroGkXlCyjVk","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.t_zujyatr3ycS0KOJklnDsCNY0hCVf0jGic8aq4cdDA4XLLgY7V00eAQpgxZTQ-tW-Bt62LHZJ7TXvQgFwcv4Q5OTvfjhk3fPoM4z48EBhu1o4Yr3-JS5t86iaPZ0Gy7NQGmAvyFJ6Ls9WvCnUTuhK9T1EUzIF_-EeDGBvFGQIGcdmfwUiiUwJeSIr06gC2st_-d0PnmWHtrSxVDNpsSZOxmo3KeyDOOV3VkEsWWEh8-to8Q3f7R7R53ok6CWUW9b_9AoQ3vmmeMfCiW6WhSnfFZIOCecVpeU1RI3XFEcHvHSQvVg_MqbXoEU7erE1u57dAWIBUJj1itMpjvjfAt6gvO3LiwnR7cnNKZn8U09b5SSJgp7NvFmrptmxbIPm7zuBWkQ77DCPxqnPjgama4n96S7SSzPmDvxhhkPcEf7IddqmXgw2Hu9oKhTpTdxsJFK-KlQ4T7Kd11hUfSgrgC3zX3F8A3z35xwCRCD_AXcYa13iwaEj5FSTmsAB-Ps7pXLReXxWOn_9WsfqgtpRKbI8VvenHZ5zHmLeW-kC4Fiek5A_pG8_0a-jwaTLbsYLO0RMJywVYo3xID9xQbKsoy2fiC8qlEDmNUrL38Bcso_m1am91uqROXlV9ONXcrfn_uN3U-zWMDf5k15ceROIh5p2-YdfIyaoX-UkO8khfeMZk","profile":{"fullName":"Do Thanh Hi","email":"turborvip@gmail.com.xxxxx.cccc","birthday":"21/19/2002","gender":"456uh","phone":"0387661380","address":"rtyj","avatar":""}}}; TIME_TAKEN = 1575
+2023-09-22 16:45:06,513 [http-nio-8077-exec-8] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: Email not wrong format!
+2023-09-22 16:45:06,514 [http-nio-8077-exec-8] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest24",
+    "password":"2g456aB!",
+    "email":"turborvip@g",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"Email not wrong format!"}; TIME_TAKEN = 4
+2023-09-22 16:45:10,828 [http-nio-8077-exec-10] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: Phone not wrong format!
+2023-09-22 16:45:10,830 [http-nio-8077-exec-10] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest24",
+    "password":"2g456aB!",
+    "email":"turborvip@g",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"038766138032453422",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"Phone not wrong format!"}; TIME_TAKEN = 4
+2023-09-22 16:45:17,855 [http-nio-8077-exec-2] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: Phone not wrong format!
+2023-09-22 16:45:17,856 [http-nio-8077-exec-2] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest24",
+    "password":"2g456aB!",
+    "email":"turborvip@g",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"038766138032453422",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"Phone not wrong format!"}; TIME_TAKEN = 4
+2023-09-22 16:45:24,060 [http-nio-8077-exec-4] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: This username : turborvipTest23 is exits
+2023-09-22 16:45:24,063 [http-nio-8077-exec-4] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest23",
+    "password":"2g456aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"This username : turborvipTest23 is exits"}; TIME_TAKEN = 6
+2023-09-22 16:45:30,227 [http-nio-8077-exec-7] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest25",
+    "password":"2g456aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Sent request register account success!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.FPm8f5SS-WXxH6LSZZjUrh-pcfSCDy58gQFZ0waUAn0vt4Ach0PXSbBZDsgs1TFSvznJeQph8_6ojMO_DAcFiiOwp0eVK_0r77T96U8D85Bf-L__Ea17w7WwRMlD9yPZzbtZbYExMhwxQsQNfAdKLdAr9jcPmR_an6kpz_GUqYKAd74m3cYlgmy2AvHHPa5whd2y7bXr6Rug9-kH88bT_kmwcR6-NUJgzeDOsGzJdQ27awqZPhmVU8JqmTSJI8YvKxQELluJLGez8Gl8vb03o0ZcIufkHOVjm77ZzwOcjPXTkiIQpIs2thfmxiHpbvk2EEVtQU8dTEmbLu60voUuzupDWvLXHezWBEdhA4tuPEf_ryyMb4KnKWy8jZ-4oX_0JeioRFqpfVgWxT89iRotp7754lUh2IkX7I2mFqz7C-f2B-qeRx0kxv0qNgQd4gmbgFM5uomwT_BEOfyrCG33XXSkRxaQzsadzzJ66s8eeyT8dkljpcugNuuymnH9PIcLmX4tgLn-BIzbOcj5LyRJBtzuFcZ37lt6DdD2u9JphWN9CeGgnb0LEhhzzGcbCbJ8GKOayj79RQaHMYfzpu3ixw6URnr157z0rd_qRlaOUCDDH4Ifo2E7Z5QSZ6h3FYrIaZJULQpQWvlXWadvqwK1W2AVSLLjACEVe9OqGOPEPKQ","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.Dmu_sqR3tdX7RrgIL9gISGSL38t0283lM7rT7NzUrjfi2Hbx5wgXvxjfQRbyw67KF93aUC2bvmqwPXn5UUiUdQAzQWJl-1EtMzraLIOiql-m2e-vbCQmcT2wS5wnAsaT2pHSArDy3H27e4pWtdTb1yOMwU8sHB8Afu2VrClcFBlCeZgmzsPYMIWMDXRdrCVdRpvpLjFDpnf9_ZvWIBkqbyruvj3RN1ckB-15UXvumy2gduHdSi6DMcICqcZg2qSJk9LsofaIRqJSll2J49IAgoRtV2Kfs384Mprb6l6-TxafxVTlRFBDRlahXiTFuwQy9sPp6T0kdnJOlyhTMwLiJsaAds6-efd4ezLSKHMztHa5z_CP0JPmKNRZtFsQEh0x0kxnxStUMuf6-49jUd4s4tvSt1n99W3_9VKlK8FpqX7qZ0cbu2RppeD5cOfOloC2sWCNBrJrvL7lceyebatGnGmx4cxHKV42D6vxIn_ncWldwx75IdnkO6O47HrnvUCsnAJ2ZQlOvCNcObF20BRrCHToxnFTyqPqHxAdYu3-XuO2WEFi7d_RKMX_34GqtQuGGYvjNFmJBl_sr57mAZrw7bCL27Zeg7FU3iRBPRyL3ESH9iHjZXv6Dq-t0pDYiNbeCTYjFd0EPYQRrFkf6L0rFylP6qHq2bZv0TxsjGlMf1I","profile":{"fullName":"Do Thanh Hi","email":"turborvip@gmail.com.xxxxx.cccc","birthday":"21/19/2002","gender":"456uh","phone":"0387661380","address":"rtyj","avatar":""}}}; TIME_TAKEN = 2044
+2023-09-22 16:45:34,358 [http-nio-8077-exec-6] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: This username : turborvipTest25 is exits
+2023-09-22 16:45:34,359 [http-nio-8077-exec-6] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest25",
+    "password":"2g45aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"This username : turborvipTest25 is exits"}; TIME_TAKEN = 4
+2023-09-22 16:45:38,393 [http-nio-8077-exec-8] com.turborvip.ecommerce.application.services.impl.UserServiceImpl: Password not wrong format!
+2023-09-22 16:45:38,395 [http-nio-8077-exec-8] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest26",
+    "password":"2g45aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 400; RESPONSE_BODY = {"errorMessage":"Password not wrong format!"}; TIME_TAKEN = 5
+2023-09-22 16:45:44,358 [http-nio-8077-exec-1] com.turborvip.ecommerce.application.configuration.LoggingHttpFilterConfig: HTTP Logs: 
+METHOD = POST; REQUEST_URI = /api/v1/both/register; REQUEST_BODY = {
+    "fullName":"Do Thanh Hi",
+    "userName":"turborvipTest26",
+    "password":"2g434565aB!",
+    "email":"turborvip@gmail.com.xxxxx.cccc",
+    "birthday":"21/19/2002",
+    "gender":"456uh",
+    "phone":"0387661380",
+    "address":"rtyj",
+    "avatar":""
+};
+RESPONSE_CODE = 200; RESPONSE_BODY = {"message":"Sent request register account success!","metadata":{"token":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.NdQd8DCyYX_5_n3OXB4z5EmaRhpJvoHGL4DaTKdlvRLwlye2bDshi9QkJX8SoU66JGCmbaGFKIFGJ36K-Y3UC2T2xiSaJIPTQf0H6qq4MRuMUzdEnelKjJC954jHO9cDd8WS0tKGbVW5oc_s3rvlsCj95uX3hRXu2wbEIlMbqHuQnyAUaheJbNomkUO68Twx70NEecAhSwdy-RmgDUbbJLsnz5jr9ua12MJDBd9bEQr0chNpC45QYkkPrCWIsc__IFN95iD7jpa5Gmv73Teu-z5GTdVjqKEGcYr-DLwTx7F9wo75JShLrRmAiAFqQY4Sj2oIDnuuUJqHpeGyy2JbRapyuvUJBr1MWkaMno_ovu61Zzy9-IhxrzEQAioQwLS_Ku09GwGPaAHoU5j2hESnnST7Jea0G9wMjGor6C3pRByhlcKQJlsBweyTgC-TMC6hf6e5mGP_ZZl4JbSAAt4tTCnqFzhmR5ysSnocCTVREDfAutJVwUnKZoQCmvo_8cYWnVh162VVvM6NKtm_pdwkgspwQZFgn5XkKf9DVu49Tb5U8UWLVYraXuu2JqUxPYuuwG1hyEAK0Vrsoe47p3j__q-cgko9C6e-YFXE42NxaVcAWrRBjyuih2BauP3YIda6unoU3muwbUI_X2tEnPX1D9mIYwCES9zzt5l8wj0IDr8","refreshToken":"eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXX0.Hw75pokoKsHvCH0JOMfuYadtWLsZezrItWDTkDTWDqfKu5S81InZ8YStGkwHUJ84Lkip3D7G604UXyB4lx_dgkAg92VycuKAoJjlnZ_yMW3uV7sY7XS2MZth72ac6Q5bO9UVK8Ei6VT7X-dWGDX7chAQnLte1i0C0iynd5-Jm-1rdHeQCB3odRLdmKsIw1xBdGYxDr5rP4aSFc-mkqEd-eptf5SBS9pnhea7fF0X01F0gJ__rpER39d-bKBTIFp6ktLCNM-n5Fyg3XT2hQdew0KF4T_hbvCn5p2ICQt1gspJOGFmfgDp3QSiJZtyufpE4Bdu4WOOrmLL2PXExkwsckGWwVVke_hDB_ssYlpp-bU2Hg2D3TSfZlqTMUgtBc_1EQY5cLCCPP9tFwXGqU-lEY-r6i7EmNIRmNcF_d4wtFVAJNUxoQLCX0DRebw2SRQv5hfV9DbXRQVvSGqE-6jHClDyONEAglph0VP1ARgCmQk49aAPHwiu8P45jJqajTL2jkX0Mtu2tBCy3g8i6SIjimDR79o5C4G9IE3AeUT0_YHMRKL_B7t7p5QVzoqbOI4GGZa342lguoqIB-VuocqDWWG8bugieR8hjXnjWeEy_oJlOY5oSXrYxIEQVttdz9QQChLEeiM2u8Lfn-ZnqE4q4no0Qm9w-AW9AS8ITpaBz4A","profile":{"fullName":"Do Thanh Hi","email":"turborvip@gmail.com.xxxxx.cccc","birthday":"21/19/2002","gender":"456uh","phone":"0387661380","address":"rtyj","avatar":""}}}; TIME_TAKEN = 1012

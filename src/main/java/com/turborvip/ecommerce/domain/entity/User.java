@@ -5,15 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.turborvip.ecommerce.application.constants.CommonConstant;
 import com.turborvip.ecommerce.domain.entity.base.AbstractBase;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
@@ -22,7 +21,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "users")
+@Table(name = "users",schema = "account")
 public class User extends AbstractBase implements UserDetails {
 
     @Column(name = "fullname")
@@ -30,8 +29,7 @@ public class User extends AbstractBase implements UserDetails {
     private String fullName;
 
     @NotEmpty(message = "Username must not be empty")
-//    @Size(min = 6, max = 20, message = "Username must be between 6 and 20 characters")
-//    @Column(name = "username", nullable = false, unique = true)
+    @Size(min = 6, max = 20, message = "Username must be between 6 and 20 characters")
     private String username;
 
 
@@ -69,9 +67,9 @@ public class User extends AbstractBase implements UserDetails {
     private String avatar;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
-            name = "user_role",
+            name = "user_role",schema = "account",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

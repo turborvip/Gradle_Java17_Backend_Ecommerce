@@ -2,6 +2,7 @@ package com.turborvip.ecommerce.adapter.web.rest;
 
 import com.turborvip.ecommerce.adapter.web.base.RestData;
 import com.turborvip.ecommerce.application.https.request.AuthRequest;
+import com.turborvip.ecommerce.domain.dto.UserDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
@@ -24,4 +25,7 @@ public interface AuthenticationResource {
 
     @PostMapping("/auth/refresh-token")
     ResponseEntity<RestData<?>> refreshToken(HttpServletRequest request);
+
+    @PostMapping("/both/register")
+    ResponseEntity<RestData<?>> registerUser(@RequestBody UserDTO userDTO,HttpServletRequest request);
 }

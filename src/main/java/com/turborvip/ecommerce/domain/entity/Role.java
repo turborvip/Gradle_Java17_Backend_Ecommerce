@@ -17,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "roles")
+@Table(name = "roles",schema = "account")
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Role extends AbstractBase {
@@ -26,7 +26,7 @@ public class Role extends AbstractBase {
     @Column(name = "role_name",unique = true)
     private EnumRole roleName;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles", cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "roles", cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
     @JsonInclude
     private Set<User> users = new HashSet<>();
 

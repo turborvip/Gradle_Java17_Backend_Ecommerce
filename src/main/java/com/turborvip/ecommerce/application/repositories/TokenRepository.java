@@ -15,12 +15,12 @@ import java.util.Optional;
 
 @Repository
 public interface TokenRepository extends JpaRepository<Token, Long> {
-    Optional<Token> findByCreateBy_IdAndNameAndUserDevices_DeviceID(Long id, String name, String deviceID);
+    Optional<Token> findByCreateBy_IdAndNameAndUserDevices_Device_UserAgent(Long id, String name, String userAgent);
 
     @Override
     void deleteById(Long id);
 
-    List<Token> findByCreateBy_IdAndUserDevices_DeviceID(Long id, String deviceID);
+    List<Token> findByCreateBy_IdAndUserDevices_Device_UserAgent(Long id, String userAgent);
 
     Optional<Token> findFirstByValue(String value);
 
