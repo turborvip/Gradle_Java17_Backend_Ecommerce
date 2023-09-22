@@ -173,7 +173,6 @@ public class JwtService {
         try {
             // 1. Abnormal : bat thuong in JWTAuthenticationFilter
 
-
             // 2.
             Token refreshTokenDB = tokenService.findTokenByValueAndNameAndType(refreshToken, "Refresh", "Bear")
                     .orElseThrow(() -> new Exception("Don't have anything refresh token"));
